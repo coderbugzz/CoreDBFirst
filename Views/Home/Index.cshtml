@@ -1,0 +1,38 @@
+﻿@model List<CoreDBFirst.Models.User>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="">
+    <a class="btn btn-primary" asp-action="RegisterUser">Register User</a>
+</div>
+<br/>
+<div class="text-center">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Middle Name</th>
+                <th>Contact Number</th>
+                <th colspan="2">Option</th>
+            </tr>
+        </thead>
+        <tbody id="Table_data">
+            @{ 
+                foreach (var row in Model)
+                { 
+                        <tr>
+                            <td>@row.Id</td>
+                            <td>@row.FirstName</td>
+                            <td>@row.LastName</td>
+                            <td>@row.MiddleName</td>
+                            <td>@row.Contact</td>
+                            <td><a class="btn btn-primary" asp-action="UpdateUser" asp-controller="Home" asp-route-Id=@row.Id>Edit User</a></td>
+                            <td><a class="btn btn-danger" asp-action="DeleteUser" asp-controller="Home" asp-route-Id=@row.Id>Delete</a></td>
+                        </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
